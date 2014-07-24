@@ -40,6 +40,8 @@
 
 $route['default_controller'] = "welcome";
 $route['404_override'] = '';
+/* static assets rout */
+$route['assets/(:any)'] = 'assets/$1';
 
 
 /* End of file routes.php */

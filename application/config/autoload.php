@@ -111,6 +111,8 @@ $autoload['language'] = array();
 
 $autoload['model'] = array();
 
+/* Use for loading static assets */
+$autoload['helper'] = array('form', 'url', 'utility');
 
 /* End of file autoload.php */
 /* Location: ./application/config/autoload.php */
