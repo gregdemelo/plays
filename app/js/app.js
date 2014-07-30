@@ -8,18 +8,11 @@ var playsApp = angular.module('playsApp', [
   'playsServices'
 ]);
 // 
-// playsApp.config(['$routeProvider',
-//   function($routeProvider) {
-//     $routeProvider.
-//       when('/plays', {
-//         templateUrl: 'partials/plays-list.html',
-//         controller: 'PlayListCtrl'
-//       }).
-//       when('/phones/:phoneId', {
-//         templateUrl: 'partials/play-detail.html',
-//         controller: 'PlayDetailCtrl'
-//       }).
-//       otherwise({
-//         redirectTo: '/plays'
-//       });
-//   }]);
+playsApp.config(['$routeProvider',
+  function($routeProvider) {
+    $routeProvider.
+      when('/', {
+        templateUrl: 'app/index.html',
+        controller: 'RolesController'
+      });
+}]);
