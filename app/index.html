@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en" ng-app="playsApp">
+<head>
+  <meta charset="utf-8">
+  <title>Plays</title>
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="css/animations.css">
+
+  <script src="bower_components/jquery/jquery.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/angular-resource/angular-resource.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/controllers.js"></script>
+  <script src="js/filters.js"></script>
+  <script src="js/services.js"></script>
+</head>
+<body>
+<div ng-controller="RolesController">
+<h1>{{play.name}} Roles</h1>
+
+
+  <!-- <pre>Sorting predicate = {{predicate}}; reverse = {{reverse}}</pre> -->
+  <hr/>
+  [ <a href="" ng-click="predicate=''">unsorted</a> ]
+  <table class="table table-striped roles {{predicate}} reverse-{{reverse}}">
+    <tr>
+      <th><a href="" ng-click="predicate = 'name'; reverse=!reverse" ng-class="{'reverse-true':predicate=='name'&&reverse,'reverse-false':predicate=='name'&&!reverse}">Role</a>
+      <th><a href="" ng-click="predicate = 'longestSpeech'; reverse=!reverse" ng-class="{'reverse-true':predicate=='longestSpeech'&&reverse,'reverse-false':predicate=='longestSpeech'&&!reverse}">Longest Speech</a></th>
+	  <th><a href="" ng-click="predicate = 'numberScenes'; reverse=!reverse" ng-class="{'reverse-true':predicate=='numberScenes'&&reverse,'reverse-false':predicate=='numberScenes'&&!reverse}"># scenes</a></th>
+	  <th><a href="" ng-click="predicate = 'percentScenes'; reverse=!reverse" ng-class="{'reverse-true':predicate=='percentScenes'&&reverse,'reverse-false':predicate=='percentScenes'&&!reverse}">% scenes</th>
+    </tr>
+    <tr ng-repeat="role in roles | orderBy:predicate:reverse | limitTo:10">
+      <td>{{role.name}}</td>
+      <td>{{role.longestSpeech}}</td>
+      <td>{{role.numberScenes}}</td>
+      <td>{{role.percentScenes}}%</td>
+    </tr>
+  </table>
+</div>
+	
+</body>
+</html>
