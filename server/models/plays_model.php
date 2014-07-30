@@ -14,7 +14,11 @@
 			foreach ($map as $file) {
 			  	$string = read_file('./data/'.$file);
 				//clean up ampersands in raw data
-				$string = preg_replace('/&[^; ]{0,6}.?/e', "((substr('\\0',-1) == ';') ? '\\0' : '&amp;'.substr('\\0',1))", $string);
+				$string = preg_replace_callback('/&[^; ]{0,6}.?/',
+				function ($matches) {
+					return "((substr('\\0',-1) == ';') ? '\\0' : '&amp;'.substr('\\0',1))";
+				},
+				$string);
 				// $xmlPlay = new SimpleXMLElement($string);
 				$xml = simplexml_load_string($string, "SimpleXMLElement", LIBXML_NOERROR |  LIBXML_ERR_NONE | LIBXML_NOWARNING);
 			
